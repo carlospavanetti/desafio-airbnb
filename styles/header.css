@@ -11,3 +11,38 @@
 .header__logo {
   color: #FF385C;
 }
+
+.header__search-options {
+  border-radius: 12px;
+  border: 1px solid #f7f7f7;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+  transition: box-shadow 0.2s ease;
+}
+
+.header__search-options:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.search-options__button {
+  height: 46px;
+  padding: 0 16px;
+  border: none;
+  font-size: 14px;
+  font-weight: 300;
+  color: #717171;
+  border-right: 1px solid #EBEBF0;
+}
+
+.search-options__button:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  border-right: 1px solid #EBEBF0;
+  font-weight: 500;
+  color: #222222;
+}
+
+.search-options__button:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border: none;
+}
