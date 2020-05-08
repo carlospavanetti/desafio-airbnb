@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function () {
-  const staysSource = new HardcodedStaysSource();
+  const apiEndpoint = "https://api.sheety.co/30b6e400-9023-4a15-8e6c-16aa4e3b1e72";
+  const staysSource = new RemoteStaysSource(apiEndpoint);
   const stays = await staysSource.content();
 
   const tree = await domTreeFromStays(stays);
@@ -7,19 +8,12 @@ document.addEventListener('DOMContentLoaded', async function () {
   tree.forEach(node => staysList.append(node));
 });
 
-function HardcodedStaysSource() {
-  this.content = async () => [{
-    "photo": "https://a0.muscache.com/im/pictures/e6c4b347-49c7-4840-8c00-df36a2a273da.jpg?aki_policy=x_large",
-    "property_type": "Apartamento",
-    "name": "Apartment in Son Parc, wonderful views",
-    "price": 433
-  },
-  {
-    "photo": "https://a0.muscache.com/im/pictures/4a5326cb-95e4-4220-a4d8-c91f50cf784c.jpg?aki_policy=xx_large",
-    "property_type": "Apartamento",
-    "name": "APARTAMENTO IDEAL PAREJAS EN SON PARC",
-    "price": 368
-  }]
+function RemoteStaysSource(location) {
+  this.location = location;
+  this.content = async () => {
+    const response = await fetch(this.location);
+    return response.json();
+  }
 }
 
 async function domTreeFromStays(stays) {
