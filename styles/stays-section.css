@@ -1,0 +1,47 @@
+.stays-list__count {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 300;
+  padding-bottom: 8px;
+  color: #222;
+}
+
+.stays-list__location {
+  font-size: 32px;
+  line-height: 36px;
+  color: #222;
+  margin: 0 0 20px;
+}
+
+.stay__photo {
+  width: 300px;
+  height: 200px;
+}
+
+.stay__type {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 300;
+  color: #717171;
+  padding-bottom: 4px;
+}
+
+.stay__title {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #222;
+  margin: 0;
+}
+
+.stay__price {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  color: #222;
+  margin: 0;
+}
+
+.stay-price__period {
+  font-weight: 300;
+}
