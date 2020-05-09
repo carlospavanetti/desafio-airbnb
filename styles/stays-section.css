@@ -1,5 +1,17 @@
+.stays {
+  display: flex;
+}
+
 .stays-list {
   width: 840px;
+}
+
+.stays-map {
+  flex-grow: 1;
+}
+
+#map {
+  height: 100%;
 }
 
 .stays-list__header {
