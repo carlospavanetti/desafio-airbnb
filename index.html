@@ -89,17 +89,19 @@
     </section>
 
     <script>
-      // Initialize and add the map
       function initMap() {
-        // The location of Uluru
-        var uluru = { lat: -23.533773, lng: -46.62529 };
-        // The map, centered at Uluru
+        var center = { lat: -23.533773, lng: -46.62529 };
         var map = new google.maps.Map(document.getElementById("map"), {
           zoom: 12,
-          center: uluru,
+          center,
         });
-        // The marker, positioned at Uluru
-        var marker = new google.maps.Marker({ position: uluru, map: map });
+        var marker = new google.maps.Marker({ position: center, map: map });
+        Array.from(Array(20)).forEach(() => {
+          var dp = (Math.random() / 20) * (Math.random() < 0.5 ? 1 : -1);
+          var dq = (Math.random() / 15) * (Math.random() < 0.5 ? 1 : -1);
+          var position = { lat: center.lat + dp, lng: center.lng + dq };
+          new google.maps.Marker({ position, map: map });
+        });
       }
     </script>
     <script
