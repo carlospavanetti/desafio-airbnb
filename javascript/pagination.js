@@ -3,8 +3,8 @@ import { RemoteTemplateSource } from './services/template.js';
 export default class Pagination {
   constructor({ data, page, itemsPerPage }) {
     this._data = data;
-    this._page = page;
-    this._itemsPerPage = itemsPerPage;
+    this._page = Number(page);
+    this._itemsPerPage = Number(itemsPerPage);
   }
 
   async element() {
@@ -39,13 +39,19 @@ export default class Pagination {
       this._rendered.removeChild(beforeArrow);
       this._rendered.removeChild(beforePage);
     } else {
+      const goBack = () => window.location.href = `?page=${this._page - 1}`;
       beforePage.innerText = this._page - 1;
+      beforePage.addEventListener('click', goBack);
+      beforeArrow.addEventListener('click', goBack);
     }
     if (!showAfter) {
       this._rendered.removeChild(afterArrow);
       this._rendered.removeChild(afterPage);
     } else {
+      const goNext = () => window.location.href = `?page=${this._page + 1}`;
       afterPage.innerText = this._page + 1;
+      afterPage.addEventListener('click', goNext);
+      afterArrow.addEventListener('click', goNext);
     }
   }
 

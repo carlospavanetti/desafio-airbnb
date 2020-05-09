@@ -22,7 +22,9 @@ export default class StaysList {
       this._fetchStays(),
       this._fetchTemplate()
     ]);
-    this._pagination = new Pagination({ data: this._stays, page: 1, itemsPerPage: 8 });
+    const params = new URLSearchParams(window.location.search);
+    const page = params.get('page') || 1;
+    this._pagination = new Pagination({ data: this._stays, page, itemsPerPage: 8 });
   }
 
   async _fetchStays() {
