@@ -1,5 +1,5 @@
 <div class="pagination">
-  <button class="pagination__arrow">
+  <button class="pagination__arrow" data-elem="before-arrow">
     <svg
       aria-hidden="true"
       role="presentation"
@@ -22,10 +22,10 @@
       </g>
     </svg>
   </button>
-  <button class="pagination__page">1</button>
-  <span class="pagination__page--selected">2</span>
-  <button class="pagination__page">3</button>
-  <button class="pagination__arrow">
+  <button class="pagination__page" data-elem="before-page"></button>
+  <span class="pagination__page--selected" data-elem="current-page"></span>
+  <button class="pagination__page" data-elem="after-page"></button>
+  <button class="pagination__arrow" data-elem="after-arrow">
     <svg
       aria-hidden="true"
       role="presentation"

@@ -25,7 +25,28 @@ export default class Pagination {
   }
 
   _render() {
+    const pageCount = Math.ceil(this._data.length / this._itemsPerPage);
+    const showBefore = this._page > 1;
+    const showAfter = this._page < pageCount;
     this._rendered = this._template.cloneNode(true);
+    const beforeArrow = this._rendered.querySelector('[data-elem="before-arrow"]');
+    const beforePage = this._rendered.querySelector('[data-elem="before-page"]');
+    const afterArrow = this._rendered.querySelector('[data-elem="after-arrow"]');
+    const afterPage = this._rendered.querySelector('[data-elem="after-page"]');
+    const currentPage = this._rendered.querySelector('[data-elem="current-page"]');
+    currentPage.innerText = this._page;
+    if (!showBefore) {
+      this._rendered.removeChild(beforeArrow);
+      this._rendered.removeChild(beforePage);
+    } else {
+      beforePage.innerText = this._page - 1;
+    }
+    if (!showAfter) {
+      this._rendered.removeChild(afterArrow);
+      this._rendered.removeChild(afterPage);
+    } else {
+      afterPage.innerText = this._page + 1;
+    }
   }
 
   _optimizedPhoto() {

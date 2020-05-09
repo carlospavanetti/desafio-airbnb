@@ -9,7 +9,6 @@ const apiEndpoint = "https://api.sheety.co/30b6e400-9023-4a15-8e6c-16aa4e3b1e72"
 export default class StaysList {
   constructor(location) {
     this._location = location;
-    this._pagination = new Pagination({ data: this._stays, page: 1, itemsPerPage: 8 });
   }
 
   async element() {
@@ -23,6 +22,7 @@ export default class StaysList {
       this._fetchStays(),
       this._fetchTemplate()
     ]);
+    this._pagination = new Pagination({ data: this._stays, page: 1, itemsPerPage: 8 });
   }
 
   async _fetchStays() {
