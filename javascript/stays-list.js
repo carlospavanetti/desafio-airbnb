@@ -46,7 +46,7 @@ export default class StaysList {
       staysLocation.innerText = this._location;
     }
     await Promise.all(
-      this._stays.map(async stay => {
+      this._pagination.data().map(async stay => {
         const node = new Stay({ location: this._location, ...stay });
         this._rendered.append(await node.element());
       })
