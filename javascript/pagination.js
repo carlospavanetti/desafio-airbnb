@@ -36,8 +36,8 @@ export default class Pagination {
     const currentPage = this._rendered.querySelector('[data-elem="current-page"]');
     currentPage.innerText = this._page;
     if (!showBefore) {
-      this._rendered.removeChild(beforeArrow);
-      this._rendered.removeChild(beforePage);
+      beforeArrow.parentNode.removeChild(beforeArrow);
+      beforePage.parentNode.removeChild(beforePage);
     } else {
       const goBack = () => window.location.href = `?page=${this._page - 1}`;
       beforePage.innerText = this._page - 1;
@@ -45,8 +45,8 @@ export default class Pagination {
       beforeArrow.addEventListener('click', goBack);
     }
     if (!showAfter) {
-      this._rendered.removeChild(afterArrow);
-      this._rendered.removeChild(afterPage);
+      afterArrow.parentNode.removeChild(afterArrow);
+      afterPage.parentNode.removeChild(afterPage);
     } else {
       const goNext = () => window.location.href = `?page=${this._page + 1}`;
       afterPage.innerText = this._page + 1;
