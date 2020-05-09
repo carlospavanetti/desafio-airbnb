@@ -34,6 +34,8 @@ export default class Pagination {
     const afterArrow = this._rendered.querySelector('[data-elem="after-arrow"]');
     const afterPage = this._rendered.querySelector('[data-elem="after-page"]');
     const currentPage = this._rendered.querySelector('[data-elem="current-page"]');
+    const staysRange = this._rendered.querySelector('[data-elem="stays-range"]');
+    const staysCount = this._rendered.querySelector('[data-elem="stays-count"]');
     currentPage.innerText = this._page;
     if (!showBefore) {
       beforeArrow.parentNode.removeChild(beforeArrow);
@@ -53,6 +55,10 @@ export default class Pagination {
       afterPage.addEventListener('click', goNext);
       afterArrow.addEventListener('click', goNext);
     }
+    const min = (this._page - 1) * this._itemsPerPage + 1;
+    const max = Math.min(this._page * this._itemsPerPage, this._data.length);
+    staysRange.innerText = `${min} - ${max}`;
+    staysCount.innerText = this._data.length;
   }
 
   _optimizedPhoto() {

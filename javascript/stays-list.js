@@ -24,7 +24,7 @@ export default class StaysList {
     ]);
     const params = new URLSearchParams(window.location.search);
     const page = params.get('page') || 1;
-    this._pagination = new Pagination({ data: this._stays, page, itemsPerPage: 8 });
+    this._pagination = new Pagination({ data: this._stays, page, itemsPerPage: 7 });
   }
 
   async _fetchStays() {

@@ -1,7 +1,16 @@
 .pagination {
   display: flex;
   justify-content: center;
-  margin: 24px;
+  margin: 24px 0 0;
+}
+
+.pagination-range {
+  margin: 16px 0 24px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 300;
+  color: #222;
 }
 
 .pagination__arrow {
