@@ -26,9 +26,13 @@ export default class Stay {
     const name = this._rendered.querySelector('[data-elem="name"]');
     const price = this._rendered.querySelector('[data-elem="price"]');
     const property_type = this._rendered.querySelector('[data-elem="property-type"]');
-    photo.src = this._photo;
+    photo.src = this._optimizedPhoto();
     name.innerText = this._name;
     price.innerText = this._price;
     property_type.innerText = `${this._property_type} em ${this._location}`;
+  }
+
+  _optimizedPhoto() {
+    return this._photo.replace('aki_policy=x_large', 'aki_policy=medium');
   }
 }
