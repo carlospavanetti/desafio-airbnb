@@ -1,5 +1,6 @@
 .stays {
   display: flex;
+  margin-top: 80px;
 }
 
 .stays-list {
@@ -8,6 +9,9 @@
 
 .stays-map {
   flex-grow: 1;
+  position: sticky;
+  top: 80px;
+  height: calc(100vh - 80px);
 }
 
 #map {
