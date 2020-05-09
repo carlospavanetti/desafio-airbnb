@@ -34,14 +34,19 @@ export default class StaysList {
   }
 
   async _render() {
-    this._rendered = this._template.cloneNode(true);
-    const staysCount = this._rendered.querySelector('[data-elem="stays-count"]');
-    const staysLocation = this._rendered.querySelector('[data-elem="stays-location"]');
-    staysCount.innerText = this._stays.length;
-    staysLocation.innerText = this._location;
-    this._stays.forEach(async stay => {
-      const node = new Stay({ location: this._location, ...stay });
-      this._rendered.append(await node.element());
-    });
+    if (!this._rendered) {
+      this._rendered = this._template.cloneNode(true);
+      const staysCount = this._rendered.querySelector('[data-elem="stays-count"]');
+      const staysLocation = this._rendered.querySelector('[data-elem="stays-location"]');
+      staysCount.innerText = this._stays.length;
+      staysLocation.innerText = this._location;
+    }
+    await Promise.all(
+      this._stays.map(async stay => {
+        const node = new Stay({ location: this._location, ...stay });
+        this._rendered.append(await node.element());
+      })
+    );
+    this._rendered.lastChild.classList.add('stay--last')
   }
 }

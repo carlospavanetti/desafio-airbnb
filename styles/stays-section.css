@@ -28,7 +28,7 @@
   border-bottom: 1px solid #ebebeb;
 }
 
-.stay:last-of-type {
+.stay.stay--last {
   border-bottom: none;
 }
 
