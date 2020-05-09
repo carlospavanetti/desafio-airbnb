@@ -1,5 +1,6 @@
 import { RemoteTemplateSource } from './services/template.js';
 import { RemoteStaysSource } from './services/stays.js';
+import StaysList from './stays-list.js';
 
 document.addEventListener('DOMContentLoaded', async function () {
   const apiEndpoint = "https://api.sheety.co/30b6e400-9023-4a15-8e6c-16aa4e3b1e72";
@@ -7,8 +8,10 @@ document.addEventListener('DOMContentLoaded', async function () {
   const stays = await staysSource.stays();
 
   const tree = await domTreeFromStays(stays);
-  const staysList = document.querySelector('.stays-list');
+  const staysList = await (new StaysList('São José dos Campos')).element(); //document.querySelector('.stays-list');
   tree.forEach(node => staysList.append(node));
+  const staysSection = document.querySelector('.stays');
+  staysSection.append(staysList);
 });
 
 async function domTreeFromStays(stays) {

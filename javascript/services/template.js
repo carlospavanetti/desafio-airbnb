@@ -12,5 +12,5 @@ export function RemoteTemplateSource(location) {
 function htmlFromText(text) {
   const parser = new DOMParser();
   const document = parser.parseFromString(text, 'text/html');
-  return document.querySelector('[data-elem="root"]');
+  return document.querySelector('body > *');
 }
