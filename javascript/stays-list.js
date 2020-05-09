@@ -1,6 +1,8 @@
 import { RemoteStaysSource } from './services/stays.js';
 import { RemoteTemplateSource } from './services/template.js';
 
+import Stay from './stay.js';
+
 const apiEndpoint = "https://api.sheety.co/30b6e400-9023-4a15-8e6c-16aa4e3b1e72";
 
 export default class StaysList {
@@ -10,7 +12,7 @@ export default class StaysList {
 
   async element() {
     await this._fetchData();
-    this._render();
+    await this._render();
     return this._rendered;
   }
 
@@ -31,11 +33,15 @@ export default class StaysList {
     this._template = await templateSource.content();
   }
 
-  _render() {
+  async _render() {
     this._rendered = this._template.cloneNode(true);
     const staysCount = this._rendered.querySelector('[data-elem="stays-count"]');
     const staysLocation = this._rendered.querySelector('[data-elem="stays-location"]');
     staysCount.innerText = this._stays.length;
     staysLocation.innerText = this._location;
+    this._stays.forEach(async stay => {
+      const node = new Stay({ location: this._location, ...stay });
+      this._rendered.append(await node.element());
+    });
   }
 }
