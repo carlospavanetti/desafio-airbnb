@@ -20,7 +20,7 @@ export default class Pagination {
   }
 
   async _fetchTemplate() {
-    const templateSource = new RemoteTemplateSource('/_templates/_pagination.html');
+    const templateSource = new RemoteTemplateSource('_templates/_pagination.html');
     this._template = await templateSource.content();
   }
 

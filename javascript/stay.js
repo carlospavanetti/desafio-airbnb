@@ -16,7 +16,7 @@ export default class Stay {
   }
 
   async _fetchTemplate() {
-    const templateSource = new RemoteTemplateSource('/_templates/_stay.html');
+    const templateSource = new RemoteTemplateSource('_templates/_stay.html');
     this._template = await templateSource.content();
   }
 

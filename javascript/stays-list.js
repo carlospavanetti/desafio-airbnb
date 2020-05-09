@@ -33,7 +33,7 @@ export default class StaysList {
   }
 
   async _fetchTemplate() {
-    const templateSource = new RemoteTemplateSource('/_templates/_stays-list.html');
+    const templateSource = new RemoteTemplateSource('_templates/_stays-list.html');
     this._template = await templateSource.content();
   }
 
